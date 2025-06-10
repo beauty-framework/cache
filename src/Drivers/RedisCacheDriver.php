@@ -25,7 +25,7 @@ class RedisCacheDriver implements CacheDriverInterface
     public function make(array $config): CacheInterface
     {
         $redis = new \Redis();
-        $redis->connect($config['host'], $config['port']);
+        $redis->connect($config['host'], (int) $config['port']);
         $redis->auth([
             'username' => $config['auth']['username'] ?? null,
             'password' => $config['auth']['password'] ?? null,
