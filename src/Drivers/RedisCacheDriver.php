@@ -31,7 +31,7 @@ class RedisCacheDriver implements CacheDriverInterface
             'password' => $config['auth']['password'] ?? null,
         ]);
 
-        $redis->select($config['database']);
+        $redis->select((int) $config['database']);
 
         return new RedisCache($redis, $config['prefix'] ?? '');
     }
